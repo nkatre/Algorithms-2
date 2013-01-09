@@ -3,6 +3,13 @@
  * for index i of the original array, the new array should contain the
  * median of all elements indexed 0 to i, inclusive.
  *
+ * Approach: Maintain two priority queues, 'left' and 'right' that 
+ * maintain a balanced split of the top-half and bottom-half of 
+ * encountered elements. At each processing step that processes an
+ * element from the considered array, update the queues and 
+ * poll for the median up to that index. NOTE: The code could
+ * probably be made more efficient but it is algorithmically sound.
+ *
  * @author  Sanjay Paul
  * @date    01.08.2013
  *
@@ -16,7 +23,8 @@ public class MovingMedian {
         if (arr == null || arr.length <=1) return arr;
 
         PriorityQueue<Integer> l = new PriorityQueue<Integer>(arr.length/2 + 3);
-        PriorityQueue<Integer> r = new PriorityQueue<Integer>(arr.length/2 + 3, new Comparator<Integer>() {
+        PriorityQueue<Integer> r = new PriorityQueue<Integer>(arr.length/2 + 3, 
+                new Comparator<Integer>() {
             @Override
             public int compare(Integer i1, Integer i2) {
                 if ((int)i1 == (int)i2) return 0;
