@@ -1,0 +1,305 @@
+List of algorithmic challenges derived from various sources. An asterisk-plus 
+('*+') means the problem has been completed and its code can be found in the
+same directory as this list while an asterisk alone means that the problem
+is begun but unfinished. A minus sign indicates that the problem is too trivial
+to be worth implementing.
+
+*(1) 2D Median Selection - Given a matrix sorted in increasing order on rows and
+columns, return the median element in the matrix.
+
+*(2) Median Two Sorted Arrays - Return the median of the combined elements of
+two arrays that are provided in sorted order.
+
+*+(3) Moving Median - Given an array of unsorted elements, return an output array
+such that the ith element of the output array is the median of the first i
+elements of the input array.
+
+*+(4) Parse String Integer - Implement atoi.
+
+*+(5) String Combinatorics - (a) Return all permutations of a String. (b) Return
+all combinations of a String.
+
+*+(6) Reverse Linked List - Given a singly-linked list, reverse it in O(n) 
+(a) using recursion and O(1) dynamically allocated space and (b) iteratively.
+
+(7) Kth Largest Element in BST
+
+(8) Kth Smallest Element in BST
+
+(9) BST Construction - Construct a BST in O(n) given a sorted array
+
+(10) Optimized Max,Min Calculation - Given an unsorted array, extract both
+the max and the min in the fewest number of comparisons possible.
+
+-(11) Palindrome Check - Write a function to check if a String is palindromic.
+
+Solution: Incredibly trivial. Iterate from each end in parallel moving
+to the center. Short-circuit to failure if two characters don't match, otherwise
+continue. Return true once (a) indexes are equal or (b) indexes pass 
+each other. Watch edge cases.
+
+*+(12) Square Root - Calculate the square root of a double using basic 
+arithmetic operators.
+
+*+(13) Anagram Handling - Write a class to efficiently (a) store anagrams and 
+(b) retrieve all anagrams for a given word.
+
+(14) Add Large Binary Numbers - Given two (possibly large) binary numbers as
+Strings, add them and return the result using bitwise operations.
+
+*(15) 3 Elements Sum 0 - Given an unsorted array, find 3 elements in it that sum
+to 0.
+
+(16) Print Binary Tree - Print the elements of a binary tree level by level.
+
+(17) Simple Language Parsing - Write a function in language of your choice that 
+takes in two strings, and returns true if they match. Constraints are as 
+follows: String 1, the text to match to, will be alphabets and digits. 
+String 2, the pattern, will be alphabets, digits, '.' and '*'. '.' means 
+either alphabet or digit will be considered as a "match". "*" means the 
+previous character is repeat 0 or more # of times. For example:
+Text: 'Google' Pattern: 'Go*g.e' will return true. 
+
+(18) Binary Tree Nth Element - Given a binary tree and an integer n, return 
+the nth element in an inorder traversal of the tree.
+
+(19) Optimized Step Calculation - Write a function to compute the number of 
+ways to climb a flight of n steps. Taking 1, 2, or 3 steps at a time. Do it 
+in linear time and constant space. For n=3, the result is 4 ways.
+
+(20) Remapping Passwords - Given a dictionary based simple password, create 
+all possible (special character) passwords based on a provided mapping.
+Input: face
+Map: {a -> @, 4, A}
+Output: f@ce, f4ce, fAce
+
+(21) Roman Numeral Conversion - Convert a roman numeral string to its
+corresponding integer.
+
+(22) K-Ways Sorted Array Merge - Merge k sorted arrays, each size O(n).
+
+(23) Look and Say Sequence - Write a function to generate the first n elements
+of the "Look and Say Sequence", which is as follows:
+	1, 11, 21, 1211, 111221, 312211, 13112221, 1113213211, ...
+
+(24) Two Numbers Sum To Third - Given a sorted array, decide if any two numbers
+in the array sum to a third.
+
+Solution: Consider O(n^2) two-number sums and search in O(lg n) for an
+equivalent sum. Total time is O(n^2 lgn). We can improve this to expected 
+O(n^2) if we first hash the entire array. While considering pairs, we can 
+halt (if proceeding from least to greatest) once the sum exceeds the max
+value - this doesn't improve the worst-case but could potentially save a lot
+of checks.
+
+(25) K Most Frequent Words in Large Collection - Given a (very) large collection
+of words size n, determine the k most frequently occuring of these. Assume 
+k << n and that n is far too large for the collection to fit in memory. 
+
+Solution: We can't store a hash table on the collection since each word could
+potentially be distinct. Instead, use external sort to sort the entire
+collection. Now iterate through and count occurences for each word, retaining
+the top 10 in a min heap.
+
+Alternate Solution: Map Reduce.
+
+(26) Stack Max/Min - Implement a stack that supports max and min
+operations in O(1). Be as space-efficient as possible.
+
+(27) Bitmap Forest - Given a matrix with 1's and 0's, find the number of groups 
+of 1's. A group is defined by horiz/vertically adjacent 1's.
+
+(28) Coin-Flip Combinations - Given set of coins and each coin has its 
+unique probability to be head up, say double[] probs stores the probability 
+values for all coins, print out all different cases and accordingly probability.
+
+(29) LRU Cache - Write a class to provide an LRU cache.
+
+(30) In-Place Condensing - Given an array of integers, erase all 0's (can be other 
+value) and condense it so that there is no empty cell. Do this in-place.
+
+Solution: The key is to avoid performing more than one swap for any element.
+This can be done by keeping track of the 'swap decrement' (increases for each
+zero encountered) and then swapping as you progress. Here's a progression (swap
+decrement is in parenthesis):
+
+13802002300 (0)
+// skip to 2
+13820002300 (1)
+// skip to next 2
+13822000300 (3)
+13822300000 (3)
+
+Total Swaps: 3
+
+So the total number of swaps performed is k, which is the number of non-zero
+integers present (k is O(n)).
+
+(31) Queue With Stack - Implement a Queue using a Stack. Describe its
+performance characteristics.
+
+(32) Binary Search
+
+Solution: Not a difficult problem, but writing a correct implementation w/o
+bugs is notoriously difficult.
+
+(33) Needle in a Haystack : Given two strings (needle and haystack), return
+the index of the first character of the first occurence of needle in haystack
+(or -1 if it doesn't occur).
+
+(34) Simple Regular Expression - Write the actual code to parse a regular 
+expression including "*", which stands for 0 or more characters, "+", which 
+stands for 1 or more characters, and ".", which stands for 1 exact character.
+
+(35) Parse Primes -  Print out all prime numbers in a given string. 
+abc2134kd31 -> 2, 13, 3, 3
+
+(36) Hash Table - Write a hash table implementation for Strings.
+
+(37) Division -  Implement division without using multiplication or division. 
+Make it as efficient as possible.
+
+(38) Rotate Array - Implement a method to rotate an array in-place.
+For example: 1 2 3 4 5 on being rotated by 2 gives 4 5 1 2 3
+
+(39) Parenthetical Balancing - Implement a function string 
+balanceParanthesis(string s); which given a string s consisting of some 
+parenthesis returns a string s1 in which parenthesis are balanced and 
+differences between s and s1 are minimum. For example:
+"(ab(xy)u)2)" -> "(ab(xy)u)2"; ")))(((" -> ""
+
+(40) Convert Telephone Number - Given a telephone number, find all the 
+permutations of the letters assuming 1=abc, 2=def, etc.
+
+(41) Convert BST to CDLL - Convert a binary search tree to a sorted, 
+circular, doubly-linked list, in place (using the tree nodes as the new 
+list nodes).
+
+(42) Line Segment Intersection - Write a function to tell if two line segments 
+intersect or not.
+
+(43) Maximum Contiguous Subarray Problem - O(n) time, O(1) space solution.
+
+(44) Min Set with Sum K or better - Given a list of n numbers, write a function 
+that outputs the minimum subset of numbers that sum to at least K. Beat O(nlgn)
+since that is trivial to implement.
+
+(45) Power of Double - Implement a power function to raise a double 
+to an int power, including negative powers.
+
+(46) Multiply Strings - Write a function to take two arbitrarily long numbers 
+in the form of Strings and multiply them, returning another String with 
+the product.
+
+(47) Longest Path in Binary Tree - Given a binary tree, write a function 
+to find the length of the longest path in the tree.
+
+HINT: Between ANY two nodes.
+
+(48) Min BST Depth - Find the minimum depth of a BST.
+
+(49) Optimal Robbing - You are trying to rob houses on a street. Each house 
+has some +ve amount of cash. Your goal is to rob houses such that you maximize 
+the total robbed amount. The constraint is once you rob a house you cannot rob 
+a house adjascent to that house.
+
+(50) Spiral Matrix Iteration - Given a matrix print it clockwise from the 
+first element to the very inner element.
+
+(51) Bipartite Check - Write a function to check if an input graph is bipartite.
+
+(52) Binary Tree Comparison - Given two binary trees, return true if they have
+the same elements irrespective of order/structure.
+
+(53) Filter String - Given a filter string and an input string, remove all
+chars from the input that are present in the filter.
+
+(54) Matrix Sums - Suppose you have a matrix of numbers. How can you easily 
+compute the sum of any rectangle (i.e. a range [row_start, row_end, col_start, 
+col_end]) of those numbers? How would you code this?
+
+(55) Merge Sort - Write the code.
+
+(56) Longest Increasing Subsequence - Given an array, print the largest 
+subarray that has elements in an increasing order.
+
+(57) Subarray Sum - Write a function find sequences of consecutive integers
+that sum to a given value.
+
+(58) Longest Common Substring - Given two strings, determine if there is a 
+substring of length at least k.
+
+(59) Credit Card Fraud Detection - Given N credits cards, determine if more 
+than half of them belong to the same person/owner. All you have is an array 
+of the credit card numbers, and an api call like isSamePerson(num1, num2).
+
+(59) Number Sequence Sum - Given an integer, return all sequences of numbers 
+that sum to it. (Example: 3 -> (1, 2), (2, 1), (1, 1, 1))
+
+(60) In-Place Merge With Padding - Given 2 arrays sorted in ascending orders 
+(a[n] and b[n*2]) with the second half of array a[] being empty, create a 
+function that merges both arrays into a single sorted array.
+
+(61) Post-Order from Pre-Order and In-Order -  Given a Pre-Order and In-Order 
+string of a binary tree, can we and if we can, construct the "Post-Order" 
+String.
+
+(62) Swap Sort -  An operation "swap" means removing an element from the 
+array and appending it at the back of the same array. Find the minimum number 
+of "swaps" needed to sort that array.
+
+(63) Max Sum Non-Adjacent Elements - Find the maximum sum subset of
+elements from an array such that no two elements are adjacent to each 
+other in the array. All values are positive integers.
+
+(64) Read Write Lock - Implement a read-write lock.
+
+(65) Balanced BST - Implement a balanced BST (AVL and maybe for "fun" an RB).
+
+(66) Sorted and Rotated Array Search - Given a sorted array that has been
+rotated once, search for a specified value. (obviously in better than O(n))
+
+(67) Combinations Sum to Value - Given an array of integers, output a set of all
+combinations of the the numbers that sum to a given value X.
+
+(68) Translate Alphanumeric - Suppose we can translate numbers into 
+characters: 1->a, 2->b, ...26->z given an integer, for example, 11223, 
+output every translation of the number.
+
+(69) Subsets of Size K - Given a set, construct all subsets of size k.
+
+(70) Grid Jumping - Given a m*n grid starting from (1, 1). At any point (x, y), 
+you have two choices for the next move:
+1) move to (x+y, y);
+2) move to (x, y+x);
+
+Indicate if it's possible to move from point (1, 1) to (m, n) and give the
+shortest sequence of moves to do so.
+
+(71) Maximum Interval Intersection - Given lots of intervals [ai, bi], 
+find a point that intersects with the largest number of intervals.
+
+(72) Cubic Root - Use basic operations and achieve the best possible time 
+complexity.
+
+(73) 3x3 Word Assignment - Given a file with 3-letter words, print all 3x3 
+matrices such that each row, column and diagonal is one of the words from 
+given file.
+
+(74) Intersection Sorted Arrays - Given two sorted arrays, find their
+intersection as efficiently as possible.
+
+(75) Zero Out Matrix - Given a matrix, set the row and column corresponding to
+every zero-valued entry entirely to zeros.
+
+(76) Remove String Duplicates - Given a String, return a copy with duplicates
+removed. Write the code as efficiently as possible.
+
+(77) Interval Storage - You are given intervals of contiguous integers, 
+like [1, 10), [15, 25), [40, 50), which are non-overlapping and of a fixed size.
+Design a data structure to store these intervals and have the operations of 
+insert, delete, and find functions.
+
+(78) Pascal's Triangle Print - Given a row number in Pascal's Triangle, print
+the row.
+
