@@ -86,20 +86,22 @@ of the "Look and Say Sequence", which is as follows:
 in the array sum to a third.
 
 Solution: Consider O(n^2) two-number sums and search in O(lg n) for an
-equivalent sum. Total time is O(n^2 lgn). We can improve this to expected 
-O(n^2) if we first hash the entire array. While considering pairs, we can 
-halt (if proceeding from least to greatest) once the sum exceeds the max
-value - this doesn't improve the worst-case but could potentially save a lot
-of checks.
+equivalent sum. We can achieve excellent average-case performance by
+doing a smart binary search (depending on the sign of the sum).
+Total time is O(n^2 lgn). We can improve this to expected O(n^2) if we 
+first hash the entire array. While considering pairs, we can halt 
+(if proceeding from least to greatest) once the sum is outside the
+max/min (depending on sign) - this doesn't improve the worst-case but 
+could potentially save a lot of checks.
 
 (25) K Most Frequent Words in Large Collection - Given a (very) large collection
 of words size n, determine the k most frequently occuring of these. Assume 
 k << n and that n is far too large for the collection to fit in memory. 
 
 Solution: We can't store a hash table on the collection since each word could
-potentially be distinct. Instead, use external sort to sort the entire
-collection. Now iterate through and count occurences for each word, retaining
-the top 10 in a min heap.
+potentially be distinct and such a map would be too large. Instead, use 
+external sort to sort the entire collection. Now iterate through and count 
+occurences for each word, retaining the top 10 in a min heap.
 
 Alternate Solution: Map Reduce.
 
