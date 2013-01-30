@@ -10,10 +10,13 @@
 
 public class MedianTwoSortedArrays {
 
-    private static int getMedian(int[] arr) {
-        if (arr.length % 2 == 0)
-            return (arr[arr.length/2-1] + arr[arr.length/2]) / 2;
-        return arr[arr.length/2];
+    private static int getMedian(int[] arr, int beg, int end) {
+        int len = end - beg + 1;
+        if (len == 1)
+            return 0;
+        if (len % 2 == 0)
+            return len/2 + beg - 1;
+        return len/2 + beg;
     }
     
     public static int getMedianSortedArrays(int[] arr1, int[] arr2) {
@@ -69,12 +72,21 @@ public class MedianTwoSortedArrays {
         // If the arrays do overlap, then we need to do some binary searching
         int[] a = arr1;
         int[] b = arr2;
+        int a_beg = 0;
+        int a_end = a.length - 1;
+        int b_beg = 0;
+        int b_end = b.length - 1;
         while (true) {
-            int med1 = getMedian(a);
-            int med2 = getMedian(b);
+            int i_med1 = getMedian(a, a_beg, a_end);
+            int i_med2 = getMedian(b, b_beg, b_end);
+            int med1 = arr[i_med1];
+            int med2 = arr[i_med2];
             
             if (med1 == med2)
-                return med1;
+                return med1
+            if (med1 > med2) {
+                
+            }
         }
     }
 }

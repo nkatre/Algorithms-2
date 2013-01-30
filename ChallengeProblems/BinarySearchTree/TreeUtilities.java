@@ -57,27 +57,38 @@ public class TreeUtilities {
         Stack<TreeNode> s = new Stack<TreeNode>();
         TreeNode curr = root;
         
-        while (curr != null) {
-            if (curr.left != null) {
+        while (!s.isEmpty() || curr!=null) {
+            if (curr != null) {
                 s.push(curr);
                 curr = curr.left;
-                continue;
+            } else {
+                curr = s.pop();
+                System.out.print(curr.val + " ");
+                curr = curr.right;
             }
-            System.out.print(curr.val + " ");
-            while (curr.right==null) {
-                if (!s.isEmpty()) {
-                    curr = s.pop();
-                    System.out.print(curr.val + " ");
-                } else {
-                    curr = null;
-                    break;
-                }
-            }
-            if (curr == null)
-                break;
-            curr = curr.right;
         }
     }
 
-    // Find the kth largest
+    // Return the kth largest element in a binary search tree
+    public static int getKthLargest(TreeNode root, int k) throws Exception {
+        Stack<TreeNode> s = new Stack<TreeNode>();
+        TreeNode curr = root;
+        int j = 0; // indicating that the node is jth largest
+
+        while (!s.isEmpty() || curr!=null) {
+            if (curr!=null) {
+                s.push(curr);
+                curr = curr.left;
+            } else {
+               curr = s.pop(); 
+               j++;
+               if (j == k)
+                return curr.val;
+               if (j > k)
+                   throw new Exception();
+               curr = curr.right;
+            }
+        }
+        throw new Exception();
+    }
 }

@@ -46,4 +46,22 @@ public class Sort {
 
         return output;
     }
+
+    // In-place quicksort
+    public static void quickSort(int[] arr) {
+        quickSortHelper(arr,0,arr.length-1);
+    }
+    
+    private static void quickSortHelper(int[] arr, int beg, int end) {
+        if (beg == end)
+            return;
+        int pivot = partition(int[] arr, beg, end);
+        quickSortHelper(arr,beg,pivot - 1);
+        quickSortHelper(arr,end,pivot + 1);
+
+    }
+
+    private static int selectPivot(int[] arr, int beg, int end) {
+        int rand = (int)(Math.random()*(end - beg + 1));
+    }
 }

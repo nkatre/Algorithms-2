@@ -9,8 +9,15 @@ public class TreeTest {
         for (int[] test : tests) {
             TreeNode root = TreeUtilities.constructBST(test);
             TreeUtilities.printBinaryTree(root);
-            System.out.println();
+            System.out.print("\nInorder Traversal: ");
             TreeUtilities.printInorderTraversal(root);
+            System.out.print("\n2nd Largest : ");
+            try {
+                System.out.print(TreeUtilities.getKthLargest(root,2));
+                System.out.print(" 5th Largest: "+TreeUtilities.getKthLargest(root,5));
+            } catch (Exception e) {
+                System.out.println(" K value is out of bounds.");
+            }
             System.out.println();
         }
     }
